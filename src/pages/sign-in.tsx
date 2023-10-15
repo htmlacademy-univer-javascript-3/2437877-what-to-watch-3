@@ -1,6 +1,6 @@
-import {Logo} from '../components/Logo.tsx';
+import {Logo} from '../components/logo.tsx';
 
-export function SignIn(){
+export const SignIn = () => {
   const isEmailError = true;
   const errorMessage = 'Please enter a valid email address';
   return(
@@ -38,4 +38,4 @@ export function SignIn(){
       </div>
     </div>
   );
-}
+};

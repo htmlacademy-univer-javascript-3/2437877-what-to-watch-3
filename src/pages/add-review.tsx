@@ -1,6 +1,6 @@
-import {PromoHeader} from '../components/PromoHeader.tsx';
+import {PromoHeader} from '../components/promo-header.tsx';
 import {promoFilm} from '../storeOfShit.ts';
-import {RatingStars} from '../components/RatingStars.tsx';
+import {RatingStars} from '../components/rating-stars.tsx';
 
 export const AddReview = () => (
   <section className="film-card film-card--full">

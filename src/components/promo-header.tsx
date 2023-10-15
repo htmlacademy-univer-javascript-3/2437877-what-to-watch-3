@@ -1,5 +1,5 @@
-import {PromoFilmCard} from './PromoFilmCard.tsx';
-import {Header} from './Header.tsx';
+import {PromoFilmCard} from './promo-film-card.tsx';
+import {Header} from './header.tsx';
 
 interface PromoHeaderProps{
   filmName: string;

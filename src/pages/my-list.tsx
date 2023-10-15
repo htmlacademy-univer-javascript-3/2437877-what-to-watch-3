@@ -1,6 +1,6 @@
-import {Logo} from '../components/Logo.tsx';
-import {UserBlock} from '../components/UserBlock.tsx';
-import {FilmCard} from '../components/FilmCard.tsx';
+import {Logo} from '../components/logo.tsx';
+import {UserBlock} from '../components/user-block.tsx';
+import {FilmCard} from '../components/film-card.tsx';
 
 export function MyList(){
   const myFilms = [

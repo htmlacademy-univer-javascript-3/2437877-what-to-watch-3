@@ -1,6 +1,6 @@
-import {RatingStar} from './RatingStar.tsx';
+import {RatingStar} from './rating-star.tsx';
 
-export function RatingStars(){
+export const RatingStars = () => {
   const nums = [...Array(11).keys()].slice(1).reverse();
   return (
     <div className="rating">
@@ -9,4 +9,4 @@ export function RatingStars(){
       </div>
     </div>
   );
-}
+};

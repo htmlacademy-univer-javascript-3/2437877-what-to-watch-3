@@ -3,7 +3,7 @@ export enum Action{
   Pause
 }
 
-export const Player = ({action} : {action: Action}) => (
+export const VideoPlayer = ({action} : {action: Action}) => (
   <div className="player">
     <video src="#" className="player__video" poster="img/player-poster.jpg" />
     <button type="button" className="player__exit">

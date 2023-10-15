@@ -1,4 +1,4 @@
-export const AddReview = () => (
+export const NotFound = () => (
   <div className="notfound">
     <div className="notfound-404">
       <h3>Oops! Page not found</h3>

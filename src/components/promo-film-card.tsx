@@ -1,5 +1,5 @@
-import {FilmInfo} from './FilmInfo.tsx';
-import {FilmPoster} from '../Elements/FilmPoster.tsx';
+import {FilmInfo} from './film-info.tsx';
+import {FilmPoster} from './film-poster.tsx';
 
 interface FilmCardProps {
   filmName: string;

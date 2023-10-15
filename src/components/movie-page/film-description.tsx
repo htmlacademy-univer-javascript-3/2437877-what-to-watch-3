@@ -1,4 +1,4 @@
-import {FilmRating} from '../FilmRating.tsx';
+import {FilmRating} from '../film-rating.tsx';
 
 export const FilmDescription = () => (
   <>

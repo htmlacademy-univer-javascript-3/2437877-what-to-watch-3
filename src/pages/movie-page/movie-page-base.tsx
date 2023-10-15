@@ -1,12 +1,12 @@
-import {Header} from '../../components/Header.tsx';
+import {Header} from '../../components/header.tsx';
 import {promoFilm} from '../../storeOfShit.ts';
-import {FilmCard} from '../../components/FilmCard.tsx';
-import {FilmNav} from '../../components/FilmNav.tsx';
-import {FilmInfo} from '../../components/FilmInfo.tsx';
-import {Action, MyList} from '../../Elements/MyList.tsx';
-import {AddReview} from '../../Elements/AddReview.tsx';
-import {Play} from '../../Elements/Play.tsx';
-import {FilmPoster} from '../../Elements/FilmPoster.tsx';
+import {FilmCard} from '../../components/film-card.tsx';
+import {FilmNav} from '../../components/film-nav.tsx';
+import {FilmInfo} from '../../components/film-info.tsx';
+import {Action, MyList} from '../../components/my-list.tsx';
+import {AddReview} from '../../components/AddReview.tsx';
+import {Play} from '../../components/play.tsx';
+import {FilmPoster} from '../../components/film-poster.tsx';
 import {ReactElement} from 'react';
 
 export function MoviePageBase({content, activeTab, action} : {content:ReactElement; activeTab:string; action: Action}){
