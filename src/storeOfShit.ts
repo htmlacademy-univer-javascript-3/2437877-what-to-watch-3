@@ -34,3 +34,8 @@ export const promoFilm : { filmName: string;
     backgroundUrl: 'img/bg-the-grand-budapest-hotel.jpg',
     posterUrl: 'img/the-grand-budapest-hotel-poster.jpg'
   };
+
+export enum AuthStatus {
+  Authorize,
+  UnAuthorize,
+}

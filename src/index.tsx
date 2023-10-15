@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {App} from './pages/App.tsx';
-import {activeGenre, films, genres} from './storeOfShit.ts';
-import {AddReview} from './pages/AddReview.tsx';
-import {MoviePageDescription} from './pages/MoviePage/MoviePageDescription.tsx';
-import {MoviePageDetails} from './pages/MoviePage/MoviePageDetails.tsx';
-import {MoviePageInList} from './pages/MoviePage/MoviePageInList.tsx';
-import {MyList} from './pages/MyList.tsx';
-import {SignIn} from './pages/SignIn.tsx';
+import {App} from './pages/app.tsx';
+import {activeGenre, AuthStatus, films, genres} from './storeOfShit.ts';
+import {AddReview} from './pages/add-review.tsx';
+import {MoviePageDescription} from './pages/movie-page/movie-page-description.tsx';
+import {MyList} from './pages/my-list.tsx';
+import {SignIn} from './pages/sign-in.tsx';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {NotFound} from './pages/not-found.tsx';
+import {Player} from './pages/player.tsx';
+import {Private} from './components/private.tsx';
+import {Layout} from './components/layout.tsx';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,14 +23,21 @@ root.render(
     <title>WTW</title>
     <meta name="robots" content="noindex, nofollow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="css/main.min.css"/>
-    <App activeGenre={activeGenre} films={films} genres={genres}/>
-    <AddReview/>
-    <MoviePageDescription/>
-    <MoviePageDetails/>
-    <MoviePageInList/>
-    <MyList/>
-    <SignIn/>
-
+    <link rel="stylesheet" href="css/main.css"/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path={'/'} element={<App activeGenre={activeGenre} films={films} genres={genres}/>}/>
+          <Route path={'/login'} element={<SignIn/>}/>
+          <Route path={'/mylist'} element={<Private authStatus={AuthStatus.Authorize} page={<MyList/>}/>}/>
+          <Route path={'/films/'}>
+            <Route path={':id'} element={<MoviePageDescription/>}/>
+            <Route path={':id/review'} element={<AddReview/>}/>
+          </Route>
+          <Route path={'/player/:id'} element={<Player/>}/>
+          <Route path={'*'} element={<NotFound/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
