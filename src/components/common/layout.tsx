@@ -1,5 +1,5 @@
 import {Outlet} from 'react-router-dom';
-import {promoFilm} from '../storeOfShit.ts';
+import {promoFilm} from '@mocks/storeOfShit.ts';
 import {Header} from './header.tsx';
 import {Footer} from './footer.tsx';
 

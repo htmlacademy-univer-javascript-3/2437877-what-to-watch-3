@@ -23,17 +23,21 @@ export const films = [
   {name: 'Midnight Special', pageUrl: 'film-page.html', imgUrl: 'img/midnight-special.jpg'}
 ];
 
-export const promoFilm : { filmName: string;
+export const promoFilm : PromoFilm = {
+  filmName: 'The Grand Budapest Hotel',
+  genre: 'Drama',
+  year: 2014,
+  backgroundUrl: 'img/bg-the-grand-budapest-hotel.jpg',
+  posterUrl: 'img/the-grand-budapest-hotel-poster.jpg'
+};
+
+export interface PromoFilm {
+  filmName: string;
   genre: string;
   year: number;
   backgroundUrl: string;
-  posterUrl: string; } = {
-    filmName: 'The Grand Budapest Hotel',
-    genre: 'Drama',
-    year: 2014,
-    backgroundUrl: 'img/bg-the-grand-budapest-hotel.jpg',
-    posterUrl: 'img/the-grand-budapest-hotel-poster.jpg'
-  };
+  posterUrl: string;
+}
 
 export enum AuthStatus {
   Authorize,

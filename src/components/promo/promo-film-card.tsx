@@ -1,14 +1,14 @@
-import {FilmInfo} from './film-info.tsx';
-import {FilmPoster} from './film-poster.tsx';
+import {FilmInfo} from '../film/film-info.tsx';
+import {FilmPoster} from '../film/film-poster.tsx';
 
-interface FilmCardProps {
+interface PromoFilmCardProps {
   filmName: string;
   imgUrl: string;
   genre: string;
   year: number;
 }
 
-export const PromoFilmCard = ({filmName, genre, imgUrl, year}: FilmCardProps) => (
+export const PromoFilmCard = ({filmName, genre, imgUrl, year}: PromoFilmCardProps) => (
   <div className="film-card__info">
     <FilmPoster filmName={filmName} imgUrl={imgUrl}/>
     <div className="film-card__desc">

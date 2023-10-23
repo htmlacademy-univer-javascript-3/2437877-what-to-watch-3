@@ -1,10 +1,15 @@
-import {PromoHeader} from '../components/promo-header.tsx';
-import {promoFilm} from '../storeOfShit.ts';
-import {RatingStars} from '../components/rating-stars.tsx';
+import {PromoHeader} from '@components/promo/promo-header.tsx';
+import {promoFilm} from '../mocks/storeOfShit.ts';
+import {RatingStars} from '@components/rating/rating-stars.tsx';
 
 export const AddReview = () => (
   <section className="film-card film-card--full">
-    <PromoHeader filmName={promoFilm.filmName} genre={promoFilm.genre} year={promoFilm.year} backgroundUrl={promoFilm.backgroundUrl} posterUrl={promoFilm.posterUrl}/>
+    <PromoHeader filmName={promoFilm.filmName}
+      genre={promoFilm.genre}
+      year={promoFilm.year}
+      backgroundUrl={promoFilm.backgroundUrl}
+      posterUrl={promoFilm.posterUrl}
+    />
     <div className="add-review">
       <form action="#" className="add-review__form">
         <RatingStars/>

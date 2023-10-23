@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {App} from './pages/app.tsx';
-import {activeGenre, AuthStatus, films, genres} from './storeOfShit.ts';
-import {AddReview} from './pages/add-review.tsx';
-import {MoviePageDescription} from './pages/movie-page/movie-page-description.tsx';
-import {MyList} from './pages/my-list.tsx';
-import {SignIn} from './pages/sign-in.tsx';
+import {App} from '@pages/app.tsx';
+import {activeGenre, AuthStatus, films, genres} from '@mocks/storeOfShit.ts';
+import {AddReview} from '@pages/add-review.tsx';
+import {MoviePageDescription} from '@pages/movie-page/movie-page-description.tsx';
+import {MyList} from '@pages/my-list.tsx';
+import {SignIn} from '@pages/sign-in.tsx';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {NotFound} from './pages/not-found.tsx';
-import {Player} from './pages/player.tsx';
-import {Private} from './components/private.tsx';
-import {Layout} from './components/layout.tsx';
+import {NotFound} from '@pages/not-found.tsx';
+import {Player} from '@pages/player.tsx';
+import {Private} from '@components/common/private.tsx';
+import {Layout} from '@components/common/layout.tsx';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,7 +23,7 @@ root.render(
     <title>WTW</title>
     <meta name="robots" content="noindex, nofollow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="public/css/main.css"/>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>

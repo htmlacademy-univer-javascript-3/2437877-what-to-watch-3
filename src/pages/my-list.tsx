@@ -1,6 +1,6 @@
-import {Logo} from '../components/logo.tsx';
-import {UserBlock} from '../components/user-block.tsx';
-import {FilmCard} from '../components/film-card.tsx';
+import {UserBlock} from '@components/common/user-block.tsx';
+import {FilmCard} from '@components/film/film-card.tsx';
+import {LogoLink} from '@components/common/logo-link.tsx';
 
 export function MyList(){
   const myFilms = [
@@ -54,9 +54,7 @@ export function MyList(){
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
-          <a href="main.html" className="logo__link">
-            <Logo/>
-          </a>
+          <LogoLink/>
         </div>
 
         <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>

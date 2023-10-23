@@ -5,7 +5,7 @@ export enum Action{
 
 export const VideoPlayer = ({action} : {action: Action}) => (
   <div className="player">
-    <video src="#" className="player__video" poster="img/player-poster.jpg" />
+    <video src="#" className="player__video" poster="public/img/player-poster.jpg" />
     <button type="button" className="player__exit">
         Exit
     </button>

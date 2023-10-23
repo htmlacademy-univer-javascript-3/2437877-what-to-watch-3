@@ -1,4 +1,4 @@
-import {Logo} from '../components/logo.tsx';
+import {LogoLink} from 'components/common/logo-link.tsx';
 
 export const SignIn = () => {
   const isEmailError = true;
@@ -7,11 +7,8 @@ export const SignIn = () => {
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
-          <a href="main.html" className="logo__link">
-            <Logo/>
-          </a>
+          <LogoLink/>
         </div>
-
         <h1 className="page-title user-page__title">Sign in</h1>
       </header>
 

@@ -1,6 +1,7 @@
 import {Logo} from './logo.tsx';
 import {UserBlock} from './user-block.tsx';
-interface HeaderProps{
+
+interface HeaderProps {
   filmName: string;
   backgroundUrl: string;
 }
@@ -17,6 +18,6 @@ export const Header = ({backgroundUrl, filmName}: HeaderProps) => (
           <Logo/>
         </a>
       </div>
-      <UserBlock avatarUrl='img/avatar.jpg'/>
+      <UserBlock avatarUrl="img/avatar.jpg"/>
     </header>
   </>);

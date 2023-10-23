@@ -1,8 +1,8 @@
-import {FilmCard} from '../components/film-card.tsx';
+import {FilmCard} from '../components/film/film-card.tsx';
 import {GenreItem} from '../components/genre-item.tsx';
-import {PromoHeader} from '../components/promo-header.tsx';
-import {promoFilm} from '../storeOfShit.ts';
-import {Footer} from '../components/footer.tsx';
+import {PromoHeader} from '../components/promo/promo-header.tsx';
+import {promoFilm} from '../mocks/storeOfShit.ts';
+import {Footer} from '../components/common/footer.tsx';
 
 interface AppProps {
   genres: string[];
