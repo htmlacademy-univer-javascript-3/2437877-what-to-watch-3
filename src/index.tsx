@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {App} from './pages/app.tsx';
-import {activeGenre, AuthStatus, films, genres} from './storeOfShit.ts';
-import {AddReview} from './pages/add-review.tsx';
-import {MoviePageDescription} from './pages/movie-page/movie-page-description.tsx';
-import {MyList} from './pages/my-list.tsx';
-import {SignIn} from './pages/sign-in.tsx';
+import {MainPage} from '@pages/main-page.tsx';
+import {activeGenre, AuthStatus, promoFilm} from '@mocks/storeOfShit.ts';
+import {MoviePageDescription} from '@pages/movie-page/movie-page-description.tsx';
+import {MyList} from '@pages/my-list.tsx';
+import {SignIn} from '@pages/sign-in.tsx';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {NotFound} from './pages/not-found.tsx';
-import {Player} from './pages/player.tsx';
-import {Private} from './components/private.tsx';
-import {Layout} from './components/layout.tsx';
+import {NotFound} from '@pages/not-found.tsx';
+import {Player} from '@pages/player.tsx';
+import {Private} from '@components/common/private.tsx';
+import {films} from '@mocks/films.ts';
+import {MoviePageDetails} from '@pages/movie-page/movie-page-details.tsx';
+import {MoviePageInList} from '@pages/movie-page/movie-page-in-list.tsx';
+import {AddReview} from '@pages/add-review.tsx';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -26,16 +28,20 @@ root.render(
     <link rel="stylesheet" href="css/main.css"/>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path={'/'} element={<App activeGenre={activeGenre} films={films} genres={genres}/>}/>
-          <Route path={'/login'} element={<SignIn/>}/>
-          <Route path={'/mylist'} element={<Private authStatus={AuthStatus.Authorize} page={<MyList/>}/>}/>
-          <Route path={'/films/'}>
-            <Route path={':id'} element={<MoviePageDescription/>}/>
-            <Route path={':id/review'} element={<AddReview/>}/>
+        <Route path="/">
+          <Route path='/' element={<MainPage activeGenre={activeGenre} films={films} promoFilm={promoFilm}/>}/>
+          <Route path='/login' element={<SignIn/>}/>
+          <Route path='/mylist'
+            element={<Private authStatus={AuthStatus.Authorize} page={<MyList myFilms={films.slice(0, 3)}/>}/>}
+          />
+          <Route path='/films/:id/'>
+            <Route path='description' element={<MoviePageDescription/>}/>
+            <Route path='details' element={<MoviePageDetails/>}/>
+            <Route path='reviews' element={<MoviePageInList/>}/>
+            <Route path='add-review' element={<AddReview promoFilm={promoFilm}/>}/>
           </Route>
-          <Route path={'/player/:id'} element={<Player/>}/>
-          <Route path={'*'} element={<NotFound/>}/>
+          <Route path='/player/:id' element={<Player/>}/>
+          <Route path='*' element={<NotFound/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

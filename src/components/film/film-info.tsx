@@ -1,4 +1,10 @@
-export const FilmInfo = ({filmName, genre, year}: {filmName: string; genre: string; year: number}) => (
+interface FilmInfoProps {
+  filmName: string;
+  genre: string;
+  year: number;
+}
+
+export const FilmInfo = ({filmName, genre, year}: FilmInfoProps) => (
   <>
     <h2 className="film-card__title">{filmName}</h2>
     <p className="film-card__meta">

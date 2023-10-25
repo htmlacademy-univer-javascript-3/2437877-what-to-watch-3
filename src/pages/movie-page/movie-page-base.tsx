@@ -1,26 +1,41 @@
-import {Header} from '../../components/header.tsx';
-import {promoFilm} from '../../storeOfShit.ts';
-import {FilmCard} from '../../components/film-card.tsx';
-import {FilmNav} from '../../components/film-nav.tsx';
-import {FilmInfo} from '../../components/film-info.tsx';
-import {Action, MyList} from '../../components/my-list.tsx';
-import {AddReview} from '../../components/AddReview.tsx';
-import {Play} from '../../components/play.tsx';
-import {FilmPoster} from '../../components/film-poster.tsx';
+import {FilmNav} from '@components/film/film-nav.tsx';
+import {FilmInfo} from '@components/film/film-info.tsx';
+import {MyList} from '@components/film/my-list.tsx';
+import {AddReview} from '@components/add-review/add-review.tsx';
+import {Play} from '@components/film/play.tsx';
+import {FilmPoster} from '@components/film/film-poster.tsx';
 import {ReactElement} from 'react';
+import {films} from '@mocks/films.ts';
+import {FilmList} from '@components/film/film-list.tsx';
+import {HeaderWithBackground} from '@components/common/header-with-background.tsx';
+import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
+import {useParams} from 'react-router-dom';
+import {NotFound} from '@pages/not-found.tsx';
+import {IsFilmFavourite} from '@services/is-film-favourite.tsx';
+import {GetFilmInfoById} from '@services/get-film-info.ts';
 
-export function MoviePageBase({content, activeTab, action} : {content:ReactElement; activeTab:string; action: Action}){
-  return(
+interface MoviePageBase {
+  content: ReactElement;
+}
+
+export function MoviePageBase({content}: MoviePageBase) {
+  const {id} = useParams();
+
+  if (!id) {
+    return (<NotFound/>);
+  }
+  const filmInfo = GetFilmInfoById(id);
+  return (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
-          <Header filmName={promoFilm.filmName} backgroundUrl={promoFilm.backgroundUrl}/>
+          <HeaderWithBackground filmName={filmInfo.name} backgroundUrl={filmInfo.posterUrl}/>
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <FilmInfo filmName='The Grand Budapest Hotel' genre='Drama' year={2014}/>
+              <FilmInfo filmName={filmInfo.name} genre="Drama" year={2014}/>
               <div className="film-card__buttons">
-                <Play/>
-                <MyList action={action}/>
+                <Play filmUrl={GetFilmPageAddress(id)}/>
+                <MyList isFavorite={IsFilmFavourite(id)}/>
                 <AddReview/>
               </div>
             </div>
@@ -28,9 +43,9 @@ export function MoviePageBase({content, activeTab, action} : {content:ReactEleme
         </div>
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
-            <FilmPoster filmName='The Grand Budapest Hotel' imgUrl='img/the-grand-budapest-hotel-poster.jpg'/>
+            <FilmPoster filmName={filmInfo.name} imgUrl={filmInfo.posterUrl}/>
             <div className="film-card__desc">
-              <FilmNav tabs={ ['Overview', 'Details', 'Reviews']} activeTab={activeTab}/>
+              <FilmNav/>
               {content}
             </div>
           </div>
@@ -39,15 +54,9 @@ export function MoviePageBase({content, activeTab, action} : {content:ReactEleme
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <div className="catalog__films-list">
-            <FilmCard name='Fantastic Beasts: The Crimes of Grindelwald' pageUrl='film-page.html' imgUrl='img/fantastic-beasts-the-crimes-of-grindelwald.jpg'/>
-            <FilmCard name="Bohemian Rhapsody" pageUrl="film-page.html" imgUrl="img/bohemian-rhapsody.jpg" />
-            <FilmCard name="Macbeth" pageUrl="film-page.html" imgUrl="img/macbeth.jpg" />
-            <FilmCard name="Aviator" pageUrl="film-page.html" imgUrl="img/aviator.jpg" />
-          </div>
+          <FilmList myFilms={films}/>
         </section>
       </div>
     </>
-
   );
 }

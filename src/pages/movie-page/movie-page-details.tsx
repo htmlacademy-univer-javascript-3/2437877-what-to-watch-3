@@ -1,7 +1,6 @@
 import {MoviePageBase} from './movie-page-base.tsx';
-import {FilmDetails} from '../../components/movie-page/film-details.tsx';
-import {Action} from '../../components/my-list.tsx';
+import {FilmDetails} from '@components/movie-page/film-details.tsx';
 
 export const MoviePageDetails = () => (
-  <MoviePageBase content={<FilmDetails/>} activeTab='Details' action={Action.Add}/>
+  <MoviePageBase content={<FilmDetails/>}/>
 );
