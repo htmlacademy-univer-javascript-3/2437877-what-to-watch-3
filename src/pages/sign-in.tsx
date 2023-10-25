@@ -1,4 +1,4 @@
-import {LogoLink} from 'components/common/logo-link.tsx';
+import {LogoLink} from '@components/common/logo-link.tsx';
 
 export const SignIn = () => {
   const isEmailError = true;

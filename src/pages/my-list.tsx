@@ -1,80 +1,13 @@
-import {UserBlock} from '@components/common/user-block.tsx';
-import {FilmCard} from '@components/film/film-card.tsx';
-import {LogoLink} from '@components/common/logo-link.tsx';
+import {FilmList} from '@components/film/film-list.tsx';
+import {Film} from '@mocks/films.ts';
+import {BaseHeader} from '@components/common/base-header.tsx';
 
-export function MyList(){
-  const myFilms = [
-    {
-      name: 'Fantastic Beasts: The Crimes of Grindelwald',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'
-    },
-    {
-      name: 'Bohemian Rhapsody',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/bohemian-rhapsody.jpg'
-    },
-    {
-      name: 'Macbeth',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/macbeth.jpg'
-    },
-    {
-      name: 'Aviator',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/aviator.jpg'
-    },
-    {
-      name: 'We need to talk about Kevin',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/we-need-to-talk-about-kevin.jpg'
-    },
-    {
-      name: 'What We Do in the Shadows',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/what-we-do-in-the-shadows.jpg'
-    },
-    {
-      name: 'Revenant',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/revenant.jpg'
-    },
-    {
-      name: 'Johnny English',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/johnny-english.jpg'
-    },
-    {
-      name: 'Shutter Island',
-      pageUrl: 'film-page.html',
-      imgUrl: 'img/shutter-island.jpg'
-    }
-  ];
-  return(
-    <div className="user-page">
-      <header className="page-header user-page__head">
-        <div className="logo">
-          <LogoLink/>
-        </div>
-
-        <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>
-        <UserBlock avatarUrl='img/avatar.jpg'/>
-      </header>
-
-      <section className="catalog">
-        <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-        <div className="catalog__films-list">
-          {myFilms.map((film) => (
-            <FilmCard
-              key={film.name}
-              name={film.name}
-              pageUrl={film.pageUrl}
-              imgUrl={film.imgUrl}
-            />
-          ))}
-        </div>
-      </section>
-    </div>
-  );
-}
+export const MyList = ({myFilms}: { myFilms: Film[] }) => (
+  <div className="user-page">
+    <BaseHeader isUserPage child={<h1 className="page-title user-page__title">My list <span className="user-page__film-count">{myFilms.length}</span></h1>}/>
+    <section className="catalog">
+      <h2 className="catalog__title visually-hidden">Catalog</h2>
+      <FilmList myFilms={myFilms}/>
+    </section>
+  </div>
+);

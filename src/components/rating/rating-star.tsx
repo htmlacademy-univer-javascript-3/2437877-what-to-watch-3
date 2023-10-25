@@ -1,16 +1,29 @@
-export const RatingStar = ({index}: { index: number }) => {
+interface RatingStarProps {
+  index: number;
+  isSelected: boolean;
+  onRatingChange: (rating: number) => void;
+}
+
+export const RatingStar = ({ index, isSelected, onRatingChange }: RatingStarProps) => {
   const id = `star-${index}`;
-  return(
+
+  const handleRatingChange = () => {
+    onRatingChange(index);
+  };
+
+  return (
     <>
       <input
         className="rating__input"
         id={id}
         type="radio"
         name="rating"
-        defaultValue={index}
+        value={index}
+        checked={isSelected}
+        onChange={handleRatingChange}
       />
       <label className="rating__label" htmlFor={id}>
-              Rating {index}
+        Rating {index}
       </label>
     </>
   );

@@ -1,16 +1,16 @@
 import {Outlet} from 'react-router-dom';
 import {promoFilm} from '@mocks/storeOfShit.ts';
-import {Header} from './header.tsx';
-import {Footer} from './footer.tsx';
+import {Footer} from '@components/common/footer.tsx';
+import {PromoHeader} from '@components/promo/promo-header.tsx';
 
 export function Layout() {
   return (
     <>
-      <Header filmName={promoFilm.filmName} backgroundUrl={promoFilm.backgroundUrl}/>
-      <main>
+      <PromoHeader promoFilm={promoFilm}/>
+      <div className="page-content">
         <Outlet />
-      </main>
-      <Footer/>
+        <Footer/>
+      </div>
     </>
   );
 }

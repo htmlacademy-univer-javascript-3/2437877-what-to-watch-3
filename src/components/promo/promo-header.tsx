@@ -1,18 +1,18 @@
 import {PromoFilmCard} from './promo-film-card.tsx';
-import {Header} from '../common/header.tsx';
+import {BaseHeader} from '../common/base-header.tsx';
+import {PromoFilm} from 'mocks/storeOfShit.ts';
 
 interface PromoHeaderProps{
-  filmName: string;
-  genre: string;
-  year: number;
-  backgroundUrl: string;
-  posterUrl: string;
+  promoFilm: PromoFilm;
 }
-export const PromoHeader = ({backgroundUrl, filmName, posterUrl, genre, year}: PromoHeaderProps) => (
+export const PromoHeader = ({promoFilm}: PromoHeaderProps) => (
   <section className="film-card">
-    <Header filmName={filmName} backgroundUrl={backgroundUrl}/>
+    <div className="film-card__bg">
+      <img src={promoFilm.backgroundUrl} alt={promoFilm.filmName}/>
+    </div>
+    <BaseHeader/>
     <div className="film-card__wrap">
-      <PromoFilmCard filmName={filmName} imgUrl={posterUrl} genre={genre} year={year}/>
+      <PromoFilmCard promoFilm={promoFilm} />
     </div>
   </section>
 );

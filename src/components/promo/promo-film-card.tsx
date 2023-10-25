@@ -1,32 +1,22 @@
 import {FilmInfo} from '../film/film-info.tsx';
 import {FilmPoster} from '../film/film-poster.tsx';
+import {PromoFilm} from '@mocks/storeOfShit.ts';
+import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
+import {Play} from '@components/film/play.tsx';
+import {MyList} from '@components/film/my-list.tsx';
 
 interface PromoFilmCardProps {
-  filmName: string;
-  imgUrl: string;
-  genre: string;
-  year: number;
+  promoFilm: PromoFilm;
 }
 
-export const PromoFilmCard = ({filmName, genre, imgUrl, year}: PromoFilmCardProps) => (
+export const PromoFilmCard = ({promoFilm}: PromoFilmCardProps) => (
   <div className="film-card__info">
-    <FilmPoster filmName={filmName} imgUrl={imgUrl}/>
+    <FilmPoster filmName={promoFilm.filmName} imgUrl={promoFilm.posterUrl}/>
     <div className="film-card__desc">
-      <FilmInfo filmName={filmName} genre={genre} year={year}/>
+      <FilmInfo filmName={promoFilm.filmName} genre={promoFilm.genre} year={promoFilm.year}/>
       <div className="film-card__buttons">
-        <button className="btn btn--play film-card__button" type="button">
-          <svg viewBox="0 0 19 19" width={19} height={19}>
-            <use xlinkHref="#play-s"/>
-          </svg>
-          <span>Play</span>
-        </button>
-        <button className="btn btn--list film-card__button" type="button">
-          <svg viewBox="0 0 19 20" width={19} height={20}>
-            <use xlinkHref="#add"/>
-          </svg>
-          <span>My list</span>
-          <span className="film-card__count">9</span>
-        </button>
+        <Play filmUrl={GetFilmPageAddress(promoFilm.id)}/>
+        <MyList isFavorite={false}/>
       </div>
     </div>
   </div>
