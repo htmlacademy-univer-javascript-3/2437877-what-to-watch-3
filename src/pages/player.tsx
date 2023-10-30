@@ -1,4 +1,4 @@
-import {Action, VideoPlayer} from '@components/video-player/video-player.tsx';
+import {VideoPlayer} from '@components/video-player/video-player.tsx';
 import {useParams} from 'react-router-dom';
 import {filmUrl, promoFilm} from '@mocks/storeOfShit.ts';
 import {NotFound} from '@pages/not-found.tsx';
@@ -20,7 +20,7 @@ export const Player = () => {
   }
 
   return (
-    <VideoPlayer action={Action.Play} videoUrl={GetVideoUrlById(id)} posterUrl={GetVideoPosterUrlById(id)}/>
+    <VideoPlayer videoUrl={GetVideoUrlById(id)} posterUrl={GetVideoPosterUrlById(id)}/>
   );
 };
 
