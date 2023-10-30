@@ -8,7 +8,7 @@ import {ReactElement} from 'react';
 import {films} from '@mocks/films.ts';
 import {FilmList} from '@components/film/film-list.tsx';
 import {HeaderWithBackground} from '@components/common/header-with-background.tsx';
-import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
+import {GetFilmPlayerPageAddress} from '@services/get-filmpage-address.ts';
 import {useParams} from 'react-router-dom';
 import {NotFound} from '@pages/not-found.tsx';
 import {IsFilmFavourite} from '@services/is-film-favourite.tsx';
@@ -34,7 +34,7 @@ export function MoviePageBase({content}: MoviePageBase) {
             <div className="film-card__desc">
               <FilmInfo filmName={filmInfo.name} genre="Drama" year={2014}/>
               <div className="film-card__buttons">
-                <Play filmUrl={GetFilmPageAddress(id)}/>
+                <Play filmUrl={GetFilmPlayerPageAddress(id)}/>
                 <MyList isFavorite={IsFilmFavourite(id)}/>
                 <AddReview/>
               </div>

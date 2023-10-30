@@ -1588,6 +1588,7 @@ main {
     position: relative;
     z-index: 1;
     height: 175px;
+    width: 280px;
 }
 
 .small-film-card__image::after {

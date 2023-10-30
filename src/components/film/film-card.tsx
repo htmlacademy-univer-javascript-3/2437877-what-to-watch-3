@@ -1,17 +1,38 @@
 import {Film} from '@mocks/films.ts';
 import {Link} from 'react-router-dom';
 import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {SimpleVideoPlayer} from '@components/video-player/simple-video-player.tsx';
 
-export const FilmCard = ({id, name, posterUrl}: Film) => {
-  const [isHover, setIsHover] = useState(false);
+export const FilmCard = ({id, name, posterUrl, videoSource}: Film) => {
+  const oneSecond = 1000;
+  const [videoShouldPlay, setVideoShouldPlay] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  useEffect(() => {
+    let shouldUpdate = true;
 
+    if (videoShouldPlay) {
+      setTimeout(() => shouldUpdate && setIsVideoPlaying(true), oneSecond);
+    }
+
+    return () => {
+      shouldUpdate = false;
+    };
+  }, [videoShouldPlay]);
+
+  const handleMouseEnter = () => {
+    setVideoShouldPlay(true);
+  };
+  const handleMouseLeave = () => {
+    setVideoShouldPlay(false);
+    setIsVideoPlaying(false);
+  };
   return (
-    <Link to={GetFilmPageAddress(id)} className="small-film-card catalog__films-card" onMouseOver={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
+    <Link to={GetFilmPageAddress(id)} className="small-film-card catalog__films-card" onMouseOver={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="small-film-card__image">
-        <img src={posterUrl} alt={name} width={280} height={175}/>
+        <SimpleVideoPlayer videoUrl={videoSource} posterUrl={posterUrl} muted autoPlay={isVideoPlaying}/>
       </div>
       <h3 className="small-film-card__title">
         <Link to={GetFilmPageAddress(id)} className="small-film-card__link">{name}</Link>

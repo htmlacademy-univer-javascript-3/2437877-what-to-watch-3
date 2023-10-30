@@ -38,7 +38,7 @@ root.render(
             <Route path='description' element={<MoviePageDescription/>}/>
             <Route path='details' element={<MoviePageDetails/>}/>
             <Route path='reviews' element={<MoviePageInList/>}/>
-            <Route path='add-review' element={<AddReview promoFilm={promoFilm}/>}/>
+            <Route path='add-review' element={<AddReview/>}/>
           </Route>
           <Route path='/player/:id' element={<Player/>}/>
           <Route path='*' element={<NotFound/>}/>
