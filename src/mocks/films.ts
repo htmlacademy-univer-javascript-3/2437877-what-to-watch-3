@@ -1,3 +1,4 @@
+
 export const films: Film[] = [
   {id: 0, name: 'Macbeth', posterUrl: 'img/macbeth.jpg', backgroundUrl: 'img/macbeth.jpg', videoSource: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'},
   {id: 1, name: 'Aviator', posterUrl: 'img/aviator.jpg', backgroundUrl: 'img/aviator.jpg', videoSource: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'},
@@ -8,6 +9,8 @@ export const films: Film[] = [
   {id: 6, name: 'Orlando', posterUrl: 'img/orlando.jpg', backgroundUrl: 'img/orlando.jpg', videoSource: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'},
   {id: 7, name: 'Mindhunter', posterUrl: 'img/mindhunter.jpg', backgroundUrl: 'img/mindhunter.jpg', videoSource: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'}
 ];
+
+export const myFilms = films.slice(0, 3);
 
 export interface Film {
   id: number;

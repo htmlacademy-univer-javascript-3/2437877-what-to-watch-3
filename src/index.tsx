@@ -9,7 +9,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {NotFound} from '@pages/not-found.tsx';
 import {Player} from '@pages/player.tsx';
 import {Private} from '@components/common/private.tsx';
-import {films} from '@mocks/films.ts';
+import {films, myFilms} from '@mocks/films.ts';
 import {MoviePageDetails} from '@pages/movie-page/movie-page-details.tsx';
 import {MoviePageInList} from '@pages/movie-page/movie-page-in-list.tsx';
 import {AddReview} from '@pages/add-review.tsx';
@@ -32,7 +32,7 @@ root.render(
           <Route path='/' element={<MainPage activeGenre={activeGenre} films={films} promoFilm={promoFilm}/>}/>
           <Route path='/login' element={<SignIn/>}/>
           <Route path='/mylist'
-            element={<Private authStatus={AuthStatus.Authorize} page={<MyList myFilms={films.slice(0, 3)}/>}/>}
+            element={<Private authStatus={AuthStatus.Authorize} page={<MyList myFilms={myFilms}/>}/>}
           />
           <Route path='/films/:id/'>
             <Route path='description' element={<MoviePageDescription/>}/>

@@ -1,19 +1,18 @@
 import {UserBlock} from '@components/common/user-block.tsx';
 import {LogoLink} from '@components/common/logo-link.tsx';
-import {ReactNode} from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 interface BaseHeaderProps {
-  child?: ReactNode;
   isUserPage?: boolean;
 }
 
-export const BaseHeader = ({child = null, isUserPage = false}: BaseHeaderProps) => (
+export const BaseHeader = ({children, isUserPage = false}: React.PropsWithChildren<BaseHeaderProps>) => (
   <header className={classNames('page-header', {'user-page__head': isUserPage})}>
     <div className="logo">
       <LogoLink/>
     </div>
-    {child}
+    {children}
     <UserBlock avatarUrl="img/avatar.jpg"/>
   </header>
 );

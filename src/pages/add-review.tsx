@@ -27,7 +27,9 @@ export const AddReview = () => {
         <div className="film-card__bg">
           <img src={filmInfo.backgroundUrl} alt={filmInfo.name}/>
         </div>
-        <BaseHeader child={<Breadcrumbs pageName={filmInfo.name} pageUrl={GetFilmPageAddress(id)}/>}/>
+        <BaseHeader>
+          <Breadcrumbs pageName={filmInfo.name} pageUrl={GetFilmPageAddress(id)}/>
+        </BaseHeader>
         <div className="film-card__poster film-card__poster--small">
           <img src={filmInfo.posterUrl} alt={filmInfo.name} width="218" height="327" />
         </div>

@@ -9,7 +9,7 @@ interface VideoPlayerProps {
 }
 
 
-export const VideoPlayer = ({videoUrl,posterUrl, autoPlay = false, muted = false}: VideoPlayerProps) => {
+export const VideoPlayer = ({videoUrl, posterUrl, autoPlay = false, muted = false}: VideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);

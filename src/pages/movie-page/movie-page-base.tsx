@@ -4,21 +4,18 @@ import {MyList} from '@components/film/my-list.tsx';
 import {AddReview} from '@components/add-review/add-review.tsx';
 import {Play} from '@components/film/play.tsx';
 import {FilmPoster} from '@components/film/film-poster.tsx';
-import {ReactElement} from 'react';
+import {ReactNode} from 'react';
 import {films} from '@mocks/films.ts';
 import {FilmList} from '@components/film/film-list.tsx';
 import {HeaderWithBackground} from '@components/common/header-with-background.tsx';
 import {GetFilmPlayerPageAddress} from '@services/get-filmpage-address.ts';
 import {useParams} from 'react-router-dom';
 import {NotFound} from '@pages/not-found.tsx';
-import {IsFilmFavourite} from '@services/is-film-favourite.tsx';
+import {IsFilmFavourite} from '@services/is-film-favourite.ts';
 import {GetFilmInfoById} from '@services/get-film-info.ts';
 
-interface MoviePageBase {
-  content: ReactElement;
-}
 
-export function MoviePageBase({content}: MoviePageBase) {
+export function MoviePageBase({children}: { children?: ReactNode | undefined }) {
   const {id} = useParams();
 
   if (!id) {
@@ -46,7 +43,7 @@ export function MoviePageBase({content}: MoviePageBase) {
             <FilmPoster filmName={filmInfo.name} imgUrl={filmInfo.posterUrl}/>
             <div className="film-card__desc">
               <FilmNav/>
-              {content}
+              {children}
             </div>
           </div>
         </div>

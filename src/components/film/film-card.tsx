@@ -8,6 +8,7 @@ export const FilmCard = ({id, name, posterUrl, videoSource}: Film) => {
   const oneSecond = 1000;
   const [videoShouldPlay, setVideoShouldPlay] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
   useEffect(() => {
     let shouldUpdate = true;
 
