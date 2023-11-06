@@ -1,18 +1,17 @@
-import {FilmNav} from '@components/film/film-nav.tsx';
+import {FilmTabs} from '@components/film/film-tabs.tsx';
 import {FilmInfo} from '@components/film/film-info.tsx';
 import {MyList} from '@components/film/my-list.tsx';
 import {AddReview} from '@components/add-review/add-review.tsx';
 import {Play} from '@components/film/play.tsx';
 import {FilmPoster} from '@components/film/film-poster.tsx';
 import {ReactNode} from 'react';
-import {films} from '@mocks/films.ts';
-import {FilmList} from '@components/film/film-list.tsx';
 import {HeaderWithBackground} from '@components/common/header-with-background.tsx';
 import {GetFilmPlayerPageAddress} from '@services/get-filmpage-address.ts';
 import {useParams} from 'react-router-dom';
 import {NotFound} from '@pages/not-found.tsx';
 import {IsFilmFavourite} from '@services/is-film-favourite.ts';
 import {GetFilmInfoById} from '@services/get-film-info.ts';
+import {SimilarFilms} from '@components/film/similar-films.tsx';
 
 
 export function MoviePageBase({children}: { children?: ReactNode | undefined }) {
@@ -29,7 +28,7 @@ export function MoviePageBase({children}: { children?: ReactNode | undefined }) 
           <HeaderWithBackground filmName={filmInfo.name} backgroundUrl={filmInfo.posterUrl}/>
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <FilmInfo filmName={filmInfo.name} genre="Drama" year={2014}/>
+              <FilmInfo filmName={filmInfo.name} genre={filmInfo.genre} year={2014}/>
               <div className="film-card__buttons">
                 <Play filmUrl={GetFilmPlayerPageAddress(id)}/>
                 <MyList isFavorite={IsFilmFavourite(id)}/>
@@ -42,7 +41,7 @@ export function MoviePageBase({children}: { children?: ReactNode | undefined }) 
           <div className="film-card__info">
             <FilmPoster filmName={filmInfo.name} imgUrl={filmInfo.posterUrl}/>
             <div className="film-card__desc">
-              <FilmNav/>
+              <FilmTabs/>
               {children}
             </div>
           </div>
@@ -51,7 +50,7 @@ export function MoviePageBase({children}: { children?: ReactNode | undefined }) 
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <FilmList myFilms={films}/>
+          <SimilarFilms filmGenre={filmInfo.genre} excludeFilmId={filmInfo.id}/>
         </section>
       </div>
     </>

@@ -1,6 +1,5 @@
-import {Link} from 'react-router-dom';
 import classNames from 'classnames';
-
+import {Link} from 'react-router-dom';
 
 interface LinkWithLiWrapperProps{
   link:string;
@@ -11,15 +10,3 @@ export const LinkWithLiWrapper = ({link, text}:LinkWithLiWrapperProps) => (
     <Link to={`../${link}`} className="film-nav__link">{text}</Link>
   </li>
 );
-
-
-export const FilmNav = () => (
-  <nav className="film-nav film-card__nav">
-    <ul className="film-nav__list">
-      <LinkWithLiWrapper text='Overview' link='description'/>
-      <LinkWithLiWrapper text='Details' link='details'/>
-      <LinkWithLiWrapper text='Reviews' link='reviews'/>
-    </ul>
-  </nav>
-);
-
