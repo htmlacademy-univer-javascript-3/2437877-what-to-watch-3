@@ -1,6 +1,6 @@
 import {FilmRating} from '../film/film-rating.tsx';
 
-export const FilmDescription = () => (
+export const FilmOverview = () => (
   <>
     <FilmRating/>
     <div className="film-card__text">
