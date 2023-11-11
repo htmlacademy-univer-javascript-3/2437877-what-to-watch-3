@@ -9,7 +9,7 @@ export const MyList = ({myFilms}: { myFilms: Film[] }) => (
     </BaseHeader>
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
-      <FilmList myFilms={myFilms}/>
+      <FilmList films={myFilms}/>
     </section>
   </div>
 );

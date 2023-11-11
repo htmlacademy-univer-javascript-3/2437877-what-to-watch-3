@@ -7,5 +7,5 @@ interface SimilarFilmsProps {
 }
 
 export const SimilarFilms = ({filmGenre, excludeFilmId}: SimilarFilmsProps) => (
-  <FilmList myFilms={films.filter((x) => x.genre === filmGenre && x.id !== excludeFilmId)}/>
+  <FilmList films={films.filter((x) => x.genre === filmGenre && x.id !== excludeFilmId)}/>
 );

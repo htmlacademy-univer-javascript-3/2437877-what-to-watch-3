@@ -38,6 +38,12 @@
       ],
       "@services/*": [
         "./src/services/*"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
       ]
     },
   },
