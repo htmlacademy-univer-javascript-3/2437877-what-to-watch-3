@@ -1,5 +1,5 @@
-import {FilmList} from '@components/film/film-list.tsx';
 import {films} from '@mocks/films.ts';
+import {PagedFilmList} from '@components/film/paged-film-list.tsx';
 
 interface SimilarFilmsProps {
   filmGenre: string;
@@ -7,5 +7,5 @@ interface SimilarFilmsProps {
 }
 
 export const SimilarFilms = ({filmGenre, excludeFilmId}: SimilarFilmsProps) => (
-  <FilmList films={films.filter((x) => x.genre === filmGenre && x.id !== excludeFilmId)}/>
+  <PagedFilmList films={films.filter((x) => x.genre === filmGenre && x.id !== excludeFilmId)}/>
 );
