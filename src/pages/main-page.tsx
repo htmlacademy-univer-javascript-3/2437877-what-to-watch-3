@@ -1,16 +1,14 @@
 import {GenreItem} from '@components/genre-item.tsx';
-import {genres, PromoFilm} from '@mocks/storeOfShit.ts';
+import {genres} from 'models/film-info.ts';
 import {Footer} from '@components/common/footer.tsx';
 import {PromoHeader} from '@components/promo/promo-header.tsx';
 import {useAppSelector} from '@store/hooks.ts';
 import {PagedFilmList} from '@components/film/paged-film-list.tsx';
 
-interface MainPageProps {
-  promoFilm: PromoFilm;
-}
 
-export const MainPage = ({promoFilm}: MainPageProps) => {
-  const films = useAppSelector((x) => x.films);
+export const MainPage = () => {
+  const films = useAppSelector((x) => x.allFilms);
+  const promoFilm = useAppSelector((x)=>x.promoFilm);
 
   return (
     <>

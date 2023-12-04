@@ -1,5 +1,5 @@
 import {FilmCard} from '@components/film/film-card.tsx';
-import {Film} from '@mocks/films.ts';
+import {Film} from 'models/film.ts';
 
 
 export const FilmList = ({films}: { films: Film[] }) => (

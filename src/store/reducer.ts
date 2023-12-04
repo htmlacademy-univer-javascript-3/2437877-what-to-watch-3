@@ -1,18 +1,17 @@
 import {GenreType} from '@models/genre.ts';
-import {Film, films} from '@mocks/films.ts';
+import {Film} from '@models/film.ts';
 import {createReducer} from '@reduxjs/toolkit';
-import {setActiveGenre} from '@store/action.ts';
-
-interface State {
-  genre: GenreType;
-  films: Film[];
-}
+import {setActiveGenre, setAllFilms, setFilmsLoaded, setMyFilms, setPromoFilm} from '@store/action.ts';
+import {FilmInfo} from 'models/film-info.ts';
 
 const initialState: State = {
   genre: 'Crime',
-  films: films,
+  allFilms: [],
+  currentFilms: [],
+  promoFilm: null,
+  isFilmsLoaded: false,
+  myFilms: [],
 };
-
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
@@ -20,10 +19,32 @@ export const reducer = createReducer(initialState, (builder) => {
       state.genre = action.payload;
 
       if (state.genre === 'All genres') {
-        state.films = films;
+        state.currentFilms = state.allFilms;
       } else {
-        state.films = films.filter((x) => x.genre === state.genre);
+        state.currentFilms = state.allFilms.filter((x) => x.genre === state.genre);
       }
+    })
+    .addCase(setAllFilms, (state, action)=>{
+      state.allFilms = action.payload;
+    })
+    .addCase(setFilmsLoaded,(state,)=>{
+      state.isFilmsLoaded = true;
+    })
+    .addCase(setPromoFilm, (state, action)=>{
+      state.promoFilm = action.payload;
+    })
+    .addCase(setMyFilms, (state, action)=>{
+      state.myFilms = action.payload;
     });
 
 });
+
+
+interface State {
+  genre: GenreType;
+  allFilms: Film[];
+  currentFilms: Film[];
+  promoFilm: FilmInfo|null;
+  isFilmsLoaded: boolean;
+  myFilms: Film[];
+}

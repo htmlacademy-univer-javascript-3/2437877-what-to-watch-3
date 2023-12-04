@@ -1,4 +1,7 @@
-import {filmUrl, promoFilm} from '@mocks/storeOfShit.ts';
+import {useAppSelector} from '@store/hooks.ts';
 
-export const GetVideoUrlById = (id: string)=> filmUrl;
-export const GetVideoPosterUrlById = (id: string)=> promoFilm.posterUrl;
+export const GetVideoUrlById = (id: string)=>{
+  const films = useAppSelector((x) => x.allFilms);
+  return
+};
+export const GetVideoPosterUrlById = (id: string) => promoFilm.posterUrl;
