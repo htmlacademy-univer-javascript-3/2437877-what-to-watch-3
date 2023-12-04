@@ -1,4 +1,4 @@
-import {films} from '@mocks/films.ts';
+import {films} from 'models/film.ts';
 import {PagedFilmList} from '@components/film/paged-film-list.tsx';
 
 interface SimilarFilmsProps {

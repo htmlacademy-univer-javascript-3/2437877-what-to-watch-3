@@ -25,10 +25,10 @@ export function MoviePageBase({children}: { children?: ReactNode | undefined }) 
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
-          <HeaderWithBackground filmName={filmInfo.name} backgroundUrl={filmInfo.posterUrl}/>
+          <HeaderWithBackground filmName={filmInfo.filmName} backgroundUrl={filmInfo.posterUrl}/>
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <FilmInfo filmName={filmInfo.name} genre={filmInfo.genre} year={2014}/>
+              <FilmInfo filmName={filmInfo.filmName} genre={filmInfo.genre} year={2014}/>
               <div className="film-card__buttons">
                 <Play filmUrl={GetFilmPlayerPageAddress(id)}/>
                 <MyList isFavorite={IsFilmFavourite(id)}/>
@@ -39,7 +39,7 @@ export function MoviePageBase({children}: { children?: ReactNode | undefined }) 
         </div>
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
-            <FilmPoster filmName={filmInfo.name} imgUrl={filmInfo.posterUrl}/>
+            <FilmPoster filmName={filmInfo.filmName} imgUrl={filmInfo.posterUrl}/>
             <div className="film-card__desc">
               <FilmTabs/>
               {children}

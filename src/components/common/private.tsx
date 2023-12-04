@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import {AuthStatus} from '@mocks/storeOfShit.ts';
+import {AuthStatus} from 'models/film-info.ts';
 import {ReactElement} from 'react';
 
 
