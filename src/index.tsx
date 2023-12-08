@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import {App} from '@components/App.tsx';
 import {store} from '@store/store.ts';
-import {getFilmsAction, getMyFilmsAction, getPromoFilmAction} from '@services/api-methods.ts';
+import {checkAuthStatusAction, getFilmsAction, getMyFilmsAction, getPromoFilmAction} from '@services/api-methods.ts';
 
 store.dispatch(getFilmsAction());
-store.dispatch(getMyFilmsAction());
 store.dispatch(getPromoFilmAction());
+store.dispatch(checkAuthStatusAction());
+store.dispatch(getMyFilmsAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

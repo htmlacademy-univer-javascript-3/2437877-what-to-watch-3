@@ -5,6 +5,8 @@ import {AppDispatch, RootState} from '@store/store.ts';
 import {PromoFilm} from '@models/promo-film.ts';
 import {FilmInfo} from '@models/film-info.ts';
 import {createAPI} from '@services/api.ts';
+import {AuthInfo} from '@models/auth-Info.ts';
+import {UserInfo} from 'models/user-Info.ts';
 
 
 interface ThunkConfig {
@@ -57,4 +59,26 @@ export const getSimilarFilms = async (filmId: string) => {
   return data;
 };
 
+export const loginAction = createAsyncThunk<UserInfo, AuthInfo, ThunkConfig>(
+  'user/login',
+  async ({login: email, password}, { extra: api}) => {
+    const {data} = await api.post<UserInfo>('login', {email, password });
+    return data;
+  },
+);
+
+export const checkAuthStatusAction = createAsyncThunk<UserInfo, undefined, ThunkConfig>(
+  'user/checkAuthStatus',
+  async (_arg, { extra: api}) => {
+    const {data} = await api.get<UserInfo>('login');
+    return data;
+  },
+);
+
+export const logoutAction = createAsyncThunk<void, undefined, ThunkConfig>(
+  'user/logout',
+  async (_arg, {extra: api}) => {
+    await api.delete('logout');
+  },
+);
 

@@ -21,7 +21,7 @@ export function MoviePageBase({children}: { children?: ReactNode | undefined }) 
     if(id){
       getFilmInfo(id).then((x)=> setFilmInfo(x));
     }
-  }
+  }, [id]
   );
 
   if (!id || !filmInfo) {

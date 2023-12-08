@@ -3,7 +3,7 @@ import {Footer} from '@components/common/footer.tsx';
 import {PromoHeader} from '@components/promo/promo-header.tsx';
 import {useAppSelector} from '@store/hooks.ts';
 import {PagedFilmList} from '@components/film/paged-film-list.tsx';
-import {genres} from '@models/auth-status.ts';
+import {genres} from '@models/genre-types.ts';
 
 export const MainPage = () => {
   const films = useAppSelector((x) => x.MAIN.allFilms);

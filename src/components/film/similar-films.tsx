@@ -12,7 +12,7 @@ export const SimilarFilms = ({filmGenre, excludeFilmId}: SimilarFilmsProps) => {
   const [films, setFilms] = useState<Film[]>([]);
   useEffect(()=>{
     getSimilarFilms(excludeFilmId).then((x)=> setFilms(x));
-  });
+  },[filmGenre, excludeFilmId]);
 
   return (
     <PagedFilmList films={films.filter((x) => x.genre === filmGenre && x.id !== excludeFilmId)}/>

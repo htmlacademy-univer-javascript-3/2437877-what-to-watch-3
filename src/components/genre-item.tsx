@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {GenreType} from '@models/genre.ts';
 import {useAppDispatch, useAppSelector} from '@store/hooks.ts';
-import {setActiveGenre} from '@store/reducer.ts';
+import {setActiveGenre} from '@store/main-reducer.ts';
 
 interface GenreItemProps{
   genre: GenreType;
