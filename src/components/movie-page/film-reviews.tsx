@@ -1,7 +1,8 @@
 import {FilmReview} from '@components/movie-page/film-review.tsx';
+import {useAppSelector} from '@store/hooks.ts';
 
 export const FilmReviews = () => {
-  const reviews = ;
+  const reviews = useAppSelector((x)=>x.MAIN.reviews);
 
   return(
     <div className="film-card__reviews film-card__row">
@@ -13,4 +14,4 @@ export const FilmReviews = () => {
       </div>
     </div>
   );
-}
+};

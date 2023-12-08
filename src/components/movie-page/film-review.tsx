@@ -1,6 +1,6 @@
-import {FilmReview} from 'models/film-review.ts';
+import {FilmReview as FilmReviewModel} from 'models/film-review.ts';
 interface FilmReviewProps {
-  filmReview: FilmReview;
+  filmReview: FilmReviewModel;
 }
 export const FilmReview = ({filmReview}:FilmReviewProps) => (
   <div className="review">

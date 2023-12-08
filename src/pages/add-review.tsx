@@ -1,37 +1,45 @@
-import {RatingStars} from '@components/rating/rating-stars.tsx';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import {RatingStars} from '@components/rating/rating-stars.tsx';
 import {NotFound} from '@pages/not-found.tsx';
 import {BaseHeader} from '@components/common/base-header.tsx';
 import {Breadcrumbs} from '@components/breadcrumbs/breadcrumbs.tsx';
 import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
-import {GetFilmInfoById} from '@services/get-film-info.ts';
-import React, {useState} from 'react';
+import {FilmInfo} from '@models/film-info.ts';
+import {getFilmInfo} from '@services/api-methods.ts';
 
-export const AddReview = () => {
+export const AddReview = ():ReactElement => {
 
   const {id} = useParams();
   const [rating, setRating] = useState(2);
   const [reviewText, setReviewText] = useState('');
+  const [filmInfo, setFilmInfo] = useState<FilmInfo>();
+  useEffect(()=>{
+    if(id){
+      getFilmInfo(id).then((x)=> setFilmInfo(x));
+    }
+  }
+  );
 
   const handleReviewTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setReviewText(e.target.value);
   };
-  if (!id) {
+
+  if (!id || !filmInfo) {
     return (<NotFound/>);
   }
-  const filmInfo = GetFilmInfoById(id);
 
   return (
     <section className="film-card film-card--full">
       <section className="film-card__header">
         <div className="film-card__bg">
-          <img src={filmInfo.backgroundUrl} alt={filmInfo.name}/>
+          <img src={filmInfo.backgroundImage} alt={filmInfo.name}/>
         </div>
         <BaseHeader>
           <Breadcrumbs pageName={filmInfo.name} pageUrl={GetFilmPageAddress(id)}/>
         </BaseHeader>
         <div className="film-card__poster film-card__poster--small">
-          <img src={filmInfo.posterUrl} alt={filmInfo.name} width="218" height="327" />
+          <img src={filmInfo.posterImage} alt={filmInfo.name} width="218" height="327" />
         </div>
       </section>
       <div className="add-review">

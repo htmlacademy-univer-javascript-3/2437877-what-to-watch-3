@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
-import {AuthStatus} from 'models/film-info.ts';
 import {ReactElement} from 'react';
+import {AuthStatus} from '@models/auth-status.ts';
 
 
 interface PrivateProps {

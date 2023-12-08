@@ -1,37 +1,44 @@
+import {ReactNode, useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import {FilmTabs} from '@components/film/film-tabs.tsx';
-import {FilmInfo} from '@components/film/film-info.tsx';
+import {FilmInfo as FilmInfoComponent} from '@components/film/film-info.tsx';
 import {MyList} from '@components/film/my-list.tsx';
 import {AddReview} from '@components/add-review/add-review.tsx';
 import {Play} from '@components/film/play.tsx';
 import {FilmPoster} from '@components/film/film-poster.tsx';
-import {ReactNode} from 'react';
 import {HeaderWithBackground} from '@components/common/header-with-background.tsx';
 import {GetFilmPlayerPageAddress} from '@services/get-filmpage-address.ts';
-import {useParams} from 'react-router-dom';
 import {NotFound} from '@pages/not-found.tsx';
-import {IsFilmFavourite} from '@services/is-film-favourite.ts';
-import {GetFilmInfoById} from '@services/get-film-info.ts';
 import {SimilarFilms} from '@components/film/similar-films.tsx';
+import {getFilmInfo} from '@services/api-methods.ts';
+import {FilmInfo} from '@models/film-info.ts';
 
 
 export function MoviePageBase({children}: { children?: ReactNode | undefined }) {
   const {id} = useParams();
+  const [filmInfo, setFilmInfo] = useState<FilmInfo>();
+  useEffect(()=>{
+    if(id){
+      getFilmInfo(id).then((x)=> setFilmInfo(x));
+    }
+  }
+  );
 
-  if (!id) {
+  if (!id || !filmInfo) {
     return (<NotFound/>);
   }
-  const filmInfo = GetFilmInfoById(id);
+
   return (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
-          <HeaderWithBackground filmName={filmInfo.filmName} backgroundUrl={filmInfo.posterUrl}/>
+          <HeaderWithBackground filmName={filmInfo.name} backgroundUrl={filmInfo.backgroundImage}/>
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <FilmInfo filmName={filmInfo.filmName} genre={filmInfo.genre} year={2014}/>
+              <FilmInfoComponent filmName={filmInfo.name} genre={filmInfo.genre} year={filmInfo.released}/>
               <div className="film-card__buttons">
                 <Play filmUrl={GetFilmPlayerPageAddress(id)}/>
-                <MyList isFavorite={IsFilmFavourite(id)}/>
+                <MyList isFavorite={filmInfo.isFavorite}/>
                 <AddReview/>
               </div>
             </div>
@@ -39,7 +46,7 @@ export function MoviePageBase({children}: { children?: ReactNode | undefined }) 
         </div>
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
-            <FilmPoster filmName={filmInfo.filmName} imgUrl={filmInfo.posterUrl}/>
+            <FilmPoster filmName={filmInfo.name} imgUrl={filmInfo.posterImage}/>
             <div className="film-card__desc">
               <FilmTabs/>
               {children}

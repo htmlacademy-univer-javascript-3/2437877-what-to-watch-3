@@ -1,17 +1,30 @@
-import {Film} from '@models/film.ts';
-import {createAsyncThunk} from '@reduxjs/toolkit';
-import {AppDispatch, RootState} from '@store/store.ts';
 import {AxiosInstance} from 'axios';
-import {setAllFilms, setFilmsLoaded} from '@store/action.ts';
-import {PromoFilm} from 'models/promo-film.ts';
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {Film} from '@models/film.ts';
+import {AppDispatch, RootState} from '@store/store.ts';
+import {PromoFilm} from '@models/promo-film.ts';
+import {FilmInfo} from '@models/film-info.ts';
+import {createAPI} from '@services/api.ts';
 
+
+interface ThunkConfig {
+  dispatch: AppDispatch;
+  state: RootState;
+  extra: AxiosInstance;
+}
 
 export const getFilmsAction = createAsyncThunk<Film[],undefined,ThunkConfig>(
   'data/getFilms',
-  async (_,{ dispatch,extra: axios}) => {
+  async (_arg,{ extra: axios}) => {
     const { data } = await axios.get<Film[]>('films');
-    dispatch(setAllFilms(data));
-    dispatch(setFilmsLoaded);
+    return data;
+  },
+);
+
+export const getMyFilmsAction = createAsyncThunk<Film[],undefined,ThunkConfig>(
+  'data/getMyFilms',
+  async (_,{ extra: axios}) => {
+    const { data } = await axios.get<Film[]>('favorite');
     return data;
   },
 );
@@ -24,25 +37,24 @@ export const getPromoFilmAction = createAsyncThunk<PromoFilm, undefined, ThunkCo
   },
 );
 
-export const getFilmAction = createAsyncThunk<Film, string, ThunkConfig>(
+export const getFilmAction = createAsyncThunk<FilmInfo, string, ThunkConfig>(
   'data/getFilm',
   async (id,{ extra: api}) => {
-    const { data } = await api.get<Film>(`films/${id}`);
+    const { data } = await api.get<FilmInfo>(`films/${id}`);
     return data;
   },
 );
 
-export const getSimilarFilmsAction = createAsyncThunk<Film[], string, ThunkConfig>(
-  'data/getSimilarFilms',
-  async (id,{ extra: api}) => {
-    const { data } = await api.get<Film[]>(`films/${id}/similar`);
-    return data;
-  },
-);
+export const getFilmInfo = async (filmId: string) => {
+  const api = createAPI();
+  const {data} = await api.get<FilmInfo>(`films/${filmId}`);
+  return data;
+};
+
+export const getSimilarFilms = async (filmId: string) => {
+  const api = createAPI();
+  const {data} = await api.get<Film[]>(`films/${filmId}/similar`);
+  return data;
+};
 
 
-interface ThunkConfig {
-  dispatch: AppDispatch;
-  state: RootState;
-  extra: AxiosInstance;
-}

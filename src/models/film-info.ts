@@ -1,28 +1,19 @@
 import {GenreType} from 'models/genre.ts';
 
-export const genres: GenreType[] = [
-  'All genres',
-  'Comedies',
-  'Crime',
-  'Documentary',
-  'Dramas',
-  'Horror',
-  'Kids & Family',
-  'Romance',
-  'Sci-Fi',
-  'Thrillers',
-];
-
 export interface FilmInfo {
-  id: number;
-  filmName: string;
+  id: string;
+  name: string;
+  posterImage: string;
+  backgroundImage: string;
+  backgroundColor: string;
+  videoLink: string;
+  description: string;
+  rating: number;
+  scoresCount: number;
+  director: string;
+  starring: string[];
+  runTime: number;
   genre: GenreType;
-  year: number;
-  backgroundUrl: string;
-  posterUrl: string;
-}
-
-export enum AuthStatus {
-  Authorize,
-  UnAuthorize,
+  released: number;
+  isFavorite: boolean;
 }
