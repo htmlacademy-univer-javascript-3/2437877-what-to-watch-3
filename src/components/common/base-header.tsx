@@ -13,6 +13,6 @@ export const BaseHeader = ({children, isUserPage = false}: React.PropsWithChildr
       <LogoLink/>
     </div>
     {children}
-    <UserBlock avatarUrl="img/avatar.jpg"/>
+    <UserBlock/>
   </header>
 );

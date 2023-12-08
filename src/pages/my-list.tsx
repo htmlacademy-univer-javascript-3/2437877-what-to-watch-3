@@ -3,7 +3,7 @@ import {BaseHeader} from '@components/common/base-header.tsx';
 import {useAppSelector} from '@store/hooks.ts';
 
 export const MyList = () => {
-  const myFilms = useAppSelector((x) => x.myFilms);
+  const myFilms = useAppSelector((x) => x.MAIN.myFilms);
   return(
     <div className="user-page">
       <BaseHeader isUserPage>

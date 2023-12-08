@@ -1,17 +1,27 @@
-import {VideoPlayer} from '@components/video-player/video-player.tsx';
 import {useParams} from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {VideoPlayer} from '@components/video-player/video-player.tsx';
+import {FilmInfo} from '@models/film-info.ts';
+import {getFilmInfo} from '@services/api-methods.ts';
 import {NotFound} from '@pages/not-found.tsx';
-import {GetVideoPosterUrlById, GetVideoUrlById } from '@services/video-helpers';
+
 
 export const Player = () => {
   const {id} = useParams();
+  const [filmInfo, setFilmInfo] = useState<FilmInfo>();
+  useEffect(()=>{
+    if(id){
+      getFilmInfo(id).then((x)=> setFilmInfo(x));
+    }
+  }
+  );
 
-  if(!id){
-    return(<NotFound/>);
+  if (!id || !filmInfo) {
+    return (<NotFound/>);
   }
 
   return (
-    <VideoPlayer videoUrl={GetVideoUrlById(id)} posterUrl={GetVideoPosterUrlById(id)}/>
+    <VideoPlayer videoUrl={filmInfo.videoLink} posterUrl={filmInfo.backgroundImage}/>
   );
 };
 

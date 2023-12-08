@@ -4,7 +4,7 @@ import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
 import {useEffect, useState} from 'react';
 import {SimpleVideoPlayer} from '@components/video-player/simple-video-player.tsx';
 
-export const FilmCard = ({id, name, posterUrl, previewVideoLink}: Film) => {
+export const FilmCard = ({id, name, previewImage, previewVideoLink}: Film) => {
   const oneSecond = 1000;
   const [videoShouldPlay, setVideoShouldPlay] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -33,10 +33,10 @@ export const FilmCard = ({id, name, posterUrl, previewVideoLink}: Film) => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="small-film-card__image">
-        <SimpleVideoPlayer videoUrl={previewVideoLink} posterUrl={posterUrl} muted autoPlay={isVideoPlaying}/>
+        <SimpleVideoPlayer videoUrl={previewVideoLink} posterUrl={previewImage} muted autoPlay={isVideoPlaying}/>
       </div>
       <h3 className="small-film-card__title">
-        <Link to={GetFilmPageAddress(id)} className="small-film-card__link">{name}</Link>
+        <div className="small-film-card__link">{name}</div>
       </h3>
     </Link>
   );
