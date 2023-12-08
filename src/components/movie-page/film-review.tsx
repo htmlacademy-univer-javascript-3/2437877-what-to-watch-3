@@ -1,15 +1,13 @@
-import {FilmReview as FilmReviewModel} from 'models/film-review.ts';
-interface FilmReviewProps {
-  filmReview: FilmReviewModel;
-}
-export const FilmReview = ({filmReview}:FilmReviewProps) => (
+import {FilmReviewDto} from '@models/Dto/film-review-dto.ts';
+
+export const FilmReview = ({filmReview}: { filmReview: FilmReviewDto }) => (
   <div className="review">
     <blockquote className="review__quote">
       <p className="review__text">
-        {filmReview.text}
+        {filmReview.comment}
       </p>
       <footer className="review__details">
-        <cite className="review__author">{filmReview.author}</cite>
+        <cite className="review__author">{filmReview.user}</cite>
         <time className="review__date" dateTime={filmReview.date}>
           {filmReview.date}
         </time>

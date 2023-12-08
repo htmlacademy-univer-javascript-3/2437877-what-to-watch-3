@@ -6,7 +6,7 @@ import {deleteToken} from '@services/auth-token.ts';
 
 const LoginBlock = ():ReactElement=>(
   <div className="user-block">
-    <Link to="login" className="user-block__link">Sign in</Link>
+    <Link to="/login" className="user-block__link">Sign in</Link>
   </div>
 );
 

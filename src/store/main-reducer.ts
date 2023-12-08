@@ -3,9 +3,9 @@ import {Namespace} from '@store/const.ts';
 import {GenreType} from '@models/genre.ts';
 import {FilmInfo} from '@models/film-info.ts';
 import {Film} from '@models/film.ts';
-import {getFilmsAction, getMyFilmsAction, getPromoFilmAction} from '@services/api-methods.ts';
+import {getFilmReviewsAction, getFilmsAction, getMyFilmsAction, getPromoFilmAction} from '@services/api-methods.ts';
 import {PromoFilm} from '@models/promo-film.ts';
-import {FilmReview} from '@models/film-review.ts';
+import {FilmReviewDto} from 'models/Dto/film-review-dto.ts';
 
 interface State {
   genre: GenreType;
@@ -15,7 +15,7 @@ interface State {
   isFilmsLoaded: boolean;
   myFilms: Film[];
   filmInfo: FilmInfo|null;
-  reviews: FilmReview[];
+  reviews: FilmReviewDto[];
   similarFilms: Film[];
 }
 
@@ -71,6 +71,12 @@ export const mainSlice = createSlice({
       })
       .addCase(getMyFilmsAction.fulfilled, (state, action)=>{
         state.myFilms = action.payload;
+      })
+      .addCase(getFilmReviewsAction.rejected, (state,)=>{
+        state.reviews = [];
+      })
+      .addCase(getFilmReviewsAction.fulfilled, (state, action)=>{
+        state.reviews = action.payload;
       });
   }
 });

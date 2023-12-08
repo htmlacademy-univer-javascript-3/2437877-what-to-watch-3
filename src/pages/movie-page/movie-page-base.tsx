@@ -12,10 +12,13 @@ import {NotFound} from '@pages/not-found.tsx';
 import {SimilarFilms} from '@components/film/similar-films.tsx';
 import {getFilmInfo} from '@services/api-methods.ts';
 import {FilmInfo} from '@models/film-info.ts';
+import {useAppSelector} from '@store/hooks.ts';
+import {AuthStatus} from '@models/auth-status.ts';
 
 
 export function MoviePageBase({children}: { children?: ReactNode | undefined }) {
   const {id} = useParams();
+  const authStatus = useAppSelector((x)=>x.User.authorizationStatus);
   const [filmInfo, setFilmInfo] = useState<FilmInfo>();
   useEffect(()=>{
     if(id){
@@ -39,7 +42,7 @@ export function MoviePageBase({children}: { children?: ReactNode | undefined }) 
               <div className="film-card__buttons">
                 <Play filmUrl={GetFilmPlayerPageAddress(id)}/>
                 <MyList isFavorite={filmInfo.isFavorite}/>
-                <AddReview/>
+                {authStatus === AuthStatus.Authorized && <AddReview/>}
               </div>
             </div>
           </div>

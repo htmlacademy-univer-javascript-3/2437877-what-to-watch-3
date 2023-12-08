@@ -29,7 +29,7 @@ export const App = ()=>{
             <Route path='overview' element={<MoviePageOverview/>}/>
             <Route path='details' element={<MoviePageDetails/>}/>
             <Route path='reviews' element={<MoviePageReviews/>}/>
-            <Route path='add-review' element={<AddReview/>}/>
+            <Route path='add-review' element={<PrivateRoute page={<AddReview/>}/>}/>
           </Route>
           <Route path='/player/:id' element={<Player/>}/>
           <Route path='*' element={<NotFound/>}/>
