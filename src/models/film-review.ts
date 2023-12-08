@@ -1,7 +1,5 @@
 export interface FilmReview {
-  id: number;
-  text: string;
-  author: string;
-  date: string;
+  id: string;
+  comment: string;
   rating: number;
 }

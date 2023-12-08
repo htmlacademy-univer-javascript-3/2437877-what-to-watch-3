@@ -5,8 +5,10 @@ import {AppDispatch, RootState} from '@store/store.ts';
 import {PromoFilm} from '@models/promo-film.ts';
 import {FilmInfo} from '@models/film-info.ts';
 import {createAPI} from '@services/api.ts';
-import {AuthInfo} from '@models/auth-Info.ts';
+import {AuthInfo} from 'models/auth-Info.ts';
 import {UserInfo} from 'models/user-Info.ts';
+import {FilmReviewDto} from 'models/Dto/film-review-dto.ts';
+import {FilmReview} from 'models/film-review.ts';
 
 
 interface ThunkConfig {
@@ -82,3 +84,17 @@ export const logoutAction = createAsyncThunk<void, undefined, ThunkConfig>(
   },
 );
 
+export const getFilmReviewsAction = createAsyncThunk<FilmReviewDto[], string, ThunkConfig>(
+  'data/getFilmReviews',
+  async (id: string, { extra: api}) => {
+    const { data } = await api.get<FilmReviewDto[]>(`comments/${id}`);
+    return data;
+  },
+);
+
+export const sendFilmReviewAction = createAsyncThunk<void, FilmReview, ThunkConfig>(
+  'data/sendFilmReview',
+  async ({comment, rating, id}, { extra: api}) => {
+    await api.post<FilmReviewDto>(`comments/${id}`, {comment, rating});
+  },
+);
