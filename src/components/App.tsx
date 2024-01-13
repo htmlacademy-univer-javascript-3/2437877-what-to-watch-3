@@ -2,7 +2,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Spinner} from '@components/spinner.tsx';
 import {MainPage} from '@pages/main-page.tsx';
 import {SignIn} from '@pages/sign-in.tsx';
-import {PrivateRoute} from '@components/common/privateRoute.tsx';
+import {PrivateRoute} from '@components/private-route/private-route.tsx';
 import {MyList} from '@pages/my-list.tsx';
 import {MoviePageOverview} from '@pages/movie-page/movie-page-overview.tsx';
 import {MoviePageDetails} from '@pages/movie-page/movie-page-details.tsx';

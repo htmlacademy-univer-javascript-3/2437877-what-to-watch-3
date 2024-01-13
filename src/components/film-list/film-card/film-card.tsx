@@ -1,7 +1,7 @@
-import {Film} from 'models/film.ts';
-import {Link} from 'react-router-dom';
-import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
 import {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import {Film} from '@models/film.ts';
+import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
 import {SimpleVideoPlayer} from '@components/video-player/simple-video-player.tsx';
 
 export const FilmCard = ({id, name, previewImage, previewVideoLink}: Film) => {

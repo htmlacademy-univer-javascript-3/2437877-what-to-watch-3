@@ -21,7 +21,7 @@ export const Player = () => {
   }
 
   return (
-    <VideoPlayer videoUrl={filmInfo.videoLink} posterUrl={filmInfo.backgroundImage}/>
+    <VideoPlayer videoId={id} videoUrl={filmInfo.videoLink} posterUrl={filmInfo.backgroundImage}/>
   );
 };
 

@@ -1,5 +1,5 @@
 import {ReactElement} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {useAppSelector} from '@store/hooks.ts';
 import {AuthStatus} from '@models/auth-status.ts';
 import {deleteToken} from '@services/auth-token.ts';
@@ -13,7 +13,6 @@ const LoginBlock = ():ReactElement=>(
 export const UserBlock = ():ReactElement => {
   const authStatus = useAppSelector((x)=>x.User.authorizationStatus);
   const avatarUrl = useAppSelector((x)=>x.User.userInfo?.avatarUrl);
-  const navigate = useNavigate();
 
   if(authStatus === AuthStatus.Unauthorized){
     return (<LoginBlock/>);
@@ -33,12 +32,11 @@ export const UserBlock = ():ReactElement => {
         </div>
       </li>
       <li className="user-block__item">
-        <a className="user-block__link" onClick={()=>{
+        <Link className="user-block__link" to="/" onClick={()=>{
           deleteToken();
-          navigate('../');
         }}
         >Sign out
-        </a>
+        </Link>
       </li>
     </ul>
   );

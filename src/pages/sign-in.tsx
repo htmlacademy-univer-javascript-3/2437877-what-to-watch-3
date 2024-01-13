@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {LogoLink} from '@components/common/logo-link.tsx';
+import {LogoLink} from '@components/logo/logo-link.tsx';
 import {useAppDispatch, useAppSelector} from '@store/hooks.ts';
 import {loginAction} from '@services/api-methods.ts';
 import {AuthStatus} from '@models/auth-status.ts';
@@ -52,9 +52,6 @@ export const SignIn = () => {
 
             if(isValidEmail && isValidPassword){
               dispatch(loginAction({login:email, password:password}));
-            }else {
-              // eslint-disable-next-line no-alert
-              alert('Invalid email or password');
             }
           }}
           >

@@ -1,6 +1,6 @@
-import {FilmList} from '@components/film/film-list.tsx';
 import {useState} from 'react';
-import {Film} from 'models/film.ts';
+import {FilmList} from '@components/film-list/film-list.tsx';
+import {Film} from '@models/film.ts';
 
 
 export const PagedFilmList = ({films}: { films: Film[] }) => {

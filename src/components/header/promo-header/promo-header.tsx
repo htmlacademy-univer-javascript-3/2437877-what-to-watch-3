@@ -1,5 +1,5 @@
-import {PromoFilmCard} from './promo-film-card.tsx';
-import {BaseHeader} from '../common/base-header.tsx';
+import {PromoFilmCard} from '@components/promo-film-card/promo-film-card.tsx';
+import {BaseHeader} from '../base-header.tsx';
 import {PromoFilm} from '@models/promo-film.ts';
 
 interface PromoHeaderProps{

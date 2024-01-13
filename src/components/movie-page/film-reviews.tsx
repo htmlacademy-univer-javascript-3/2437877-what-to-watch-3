@@ -1,9 +1,9 @@
+import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {FilmReview} from '@components/movie-page/film-review.tsx';
 import {useAppDispatch, useAppSelector} from '@store/hooks.ts';
 import {NotFound} from '@pages/not-found.tsx';
 import {getFilmReviewsAction} from '@services/api-methods.ts';
-import {useEffect, useState} from 'react';
 
 export const FilmReviews = () => {
   const {id} = useParams();

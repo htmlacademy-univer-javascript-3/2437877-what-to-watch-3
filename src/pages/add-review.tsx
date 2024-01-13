@@ -2,7 +2,7 @@ import {ReactElement, useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {RatingStars} from '@components/rating/rating-stars.tsx';
 import {NotFound} from '@pages/not-found.tsx';
-import {BaseHeader} from '@components/common/base-header.tsx';
+import {BaseHeader} from '@components/header/base-header.tsx';
 import {Breadcrumbs} from '@components/breadcrumbs/breadcrumbs.tsx';
 import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
 import {FilmInfo} from '@models/film-info.ts';
@@ -29,8 +29,8 @@ export const AddReview = ():ReactElement => {
 
   const sendComment = () => {
     if(reviewText.length < 50){
-      // eslint-disable-next-line no-alert
-      alert('text should be more 50 symbols');
+      //review must be more 50 symbols
+      //нет верстки под вывод сообщения об ошибке не стал добавлять
     }
     dispatch(sendFilmReviewAction({id: id, rating: rating, comment: reviewText}))
       .then(()=>navigate(`/films/${id}/reviews`));
