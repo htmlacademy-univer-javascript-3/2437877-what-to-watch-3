@@ -1,7 +1,9 @@
 import {useRef, useState} from 'react';
+import {Link} from 'react-router-dom';
 
 
 interface VideoPlayerProps {
+  videoId: string;
   videoUrl: string;
   posterUrl: string;
   autoPlay?: boolean;
@@ -9,7 +11,7 @@ interface VideoPlayerProps {
 }
 
 
-export const VideoPlayer = ({videoUrl, posterUrl, autoPlay = false, muted = false}: VideoPlayerProps) => {
+export const VideoPlayer = ({videoId, videoUrl, posterUrl, autoPlay = false, muted = false}: VideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -41,9 +43,9 @@ export const VideoPlayer = ({videoUrl, posterUrl, autoPlay = false, muted = fals
         onTimeUpdate={handleProgress}
         autoPlay={autoPlay}
       />
-      <button type="button" className="player__exit">
-        Exit
-      </button>
+      <Link to={`/films/${videoId}/overview`}>
+        <button type="button" className="player__exit">Exit</button>
+      </Link>
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">

@@ -52,9 +52,6 @@ export const SignIn = () => {
 
             if(isValidEmail && isValidPassword){
               dispatch(loginAction({login:email, password:password}));
-            }else {
-              // eslint-disable-next-line no-alert
-              alert('Invalid email or password');
             }
           }}
           >
