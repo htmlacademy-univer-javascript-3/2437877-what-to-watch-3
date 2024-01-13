@@ -1,35 +1,38 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '@store/hooks.ts';
 import {AuthStatus} from '@models/auth-status.ts';
 import {getMyFilmsAction, sendFavoriteFilmStatusAction} from '@services/api-methods.ts';
-import {NotFound} from '@pages/not-found.tsx';
 
 interface MyListProps {
   isFavorite: boolean;
 }
 export const MyList = ({isFavorite} : MyListProps) => {
-  const {id} = useParams();
+  let {id} = useParams();
   const [isFavoriteState, setIsFavoriteState] = useState(isFavorite);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const authStatus = useAppSelector((x)=>x.User.authorizationStatus);
   const myFilmsCount = useAppSelector((x) => x.MAIN.myFilms).length;
-
-  useEffect(() => {
-    dispatch(getMyFilmsAction());
-  } , [dispatch, isFavoriteState, myFilmsCount]);
+  const promoFilmId = useAppSelector((x)=>x.MAIN.promoFilm?.id);
+  const [promoFilmCounter, setPromoFilmCounter] = useState(myFilmsCount);
 
   if (!id) {
-    return (<NotFound/>);
+    id = promoFilmId;
   }
 
   const addToFavourite = () => {
     if (authStatus === AuthStatus.Unauthorized) {
       navigate('login');
     }
-    dispatch(sendFavoriteFilmStatusAction({filmId: id, status: !isFavoriteState}));
+    dispatch(sendFavoriteFilmStatusAction({filmId: id ?? '', status: !isFavoriteState}));
     setIsFavoriteState(!isFavoriteState);
+    if(isFavoriteState) {
+      setPromoFilmCounter(promoFilmCounter - 1);
+    }else{
+      setPromoFilmCounter(promoFilmCounter + 1);
+    }
+    dispatch(getMyFilmsAction());
   };
 
   return(
@@ -43,7 +46,7 @@ export const MyList = ({isFavorite} : MyListProps) => {
           <use xlinkHref="#add"/>
         </svg>}
       <span>My list</span>
-      <span className="film-card__count">{myFilmsCount}</span>
+      <span className="film-card__count">{promoFilmCounter}</span>
     </button>
   );
 };
