@@ -1,7 +1,7 @@
-import {UserBlock} from '@components/common/user-block.tsx';
-import {LogoLink} from '@components/common/logo-link.tsx';
 import React from 'react';
 import classNames from 'classnames';
+import {UserBlock} from '@components/header/user-block/user-block.tsx';
+import {LogoLink} from '@components/logo/logo-link.tsx';
 
 interface BaseHeaderProps {
   isUserPage?: boolean;

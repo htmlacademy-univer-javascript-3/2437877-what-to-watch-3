@@ -2,7 +2,7 @@ import {ReactElement, useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {RatingStars} from '@components/rating/rating-stars.tsx';
 import {NotFound} from '@pages/not-found.tsx';
-import {BaseHeader} from '@components/common/base-header.tsx';
+import {BaseHeader} from '@components/header/base-header.tsx';
 import {Breadcrumbs} from '@components/breadcrumbs/breadcrumbs.tsx';
 import {GetFilmPageAddress} from '@services/get-filmpage-address.ts';
 import {FilmInfo} from '@models/film-info.ts';

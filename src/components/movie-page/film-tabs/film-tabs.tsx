@@ -1,4 +1,4 @@
-import {LinkWithLiWrapper} from '../common/link-with-li-wrapper';
+import {LinkWithLiWrapper} from '@components/link-with-li-wrapper/link-with-li-wrapper.tsx';
 
 export const FilmTabs = () => (
   <nav className="film-nav film-card__nav">

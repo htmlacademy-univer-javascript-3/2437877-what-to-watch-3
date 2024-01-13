@@ -1,5 +1,5 @@
-import {FilmCard} from '@components/film/film-card.tsx';
-import {Film} from 'models/film.ts';
+import {FilmCard} from '@components/film-list/film-card/film-card.tsx';
+import {Film} from '@models/film.ts';
 
 
 export const FilmList = ({films}: { films: Film[] }) => (

@@ -1,4 +1,4 @@
-import { BaseHeader } from './base-header';
+import { BaseHeader } from '../base-header.tsx';
 
 interface HeaderProps {
   filmName: string;

@@ -1,8 +1,8 @@
 import {GenreItem} from '@components/genre-item.tsx';
-import {Footer} from '@components/common/footer.tsx';
-import {PromoHeader} from '@components/promo/promo-header.tsx';
+import {Footer} from '@components/footer/footer.tsx';
+import {PromoHeader} from '@components/header/promo-header/promo-header.tsx';
 import {useAppSelector} from '@store/hooks.ts';
-import {PagedFilmList} from '@components/film/paged-film-list.tsx';
+import {PagedFilmList} from '@components/film-list/paged-film-list/paged-film-list.tsx';
 import {genres} from '@models/genre-types.ts';
 
 export const MainPage = () => {

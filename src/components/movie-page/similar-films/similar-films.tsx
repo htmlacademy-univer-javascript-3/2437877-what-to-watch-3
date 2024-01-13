@@ -1,5 +1,5 @@
-import {PagedFilmList} from '@components/film/paged-film-list.tsx';
 import {useEffect, useState} from 'react';
+import {PagedFilmList} from '@components/film-list/paged-film-list/paged-film-list.tsx';
 import {Film} from '@models/film.ts';
 import {getSimilarFilms} from '@services/api-methods.ts';
 

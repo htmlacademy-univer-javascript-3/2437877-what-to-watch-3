@@ -1,5 +1,5 @@
-import {Navigate} from 'react-router-dom';
 import {ReactElement} from 'react';
+import {Navigate} from 'react-router-dom';
 import {AuthStatus} from '@models/auth-status.ts';
 import {useAppSelector} from '@store/hooks.ts';
 

@@ -1,5 +1,5 @@
-import {FilmList} from '@components/film/film-list.tsx';
-import {BaseHeader} from '@components/common/base-header.tsx';
+import {FilmList} from '@components/film-list/film-list.tsx';
+import {BaseHeader} from '@components/header/base-header.tsx';
 import {useAppSelector} from '@store/hooks.ts';
 
 export const MyList = () => {

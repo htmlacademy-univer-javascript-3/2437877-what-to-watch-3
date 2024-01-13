@@ -1,5 +1,5 @@
-import {Logo} from '@components/common/logo.tsx';
 import {Link} from 'react-router-dom';
+import {Logo} from '@components/logo/logo.tsx';
 
 export const LogoLink = () => (
   <div className="logo">

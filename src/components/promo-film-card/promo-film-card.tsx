@@ -1,8 +1,8 @@
-import {FilmInfo} from '../film/film-info.tsx';
-import {FilmPoster} from '../film/film-poster.tsx';
+import {FilmInfo} from '@components/film-info/film-info.tsx';
+import {FilmPoster} from '../film-poster/film-poster.tsx';
 import {GetFilmPlayerPageAddress} from '@services/get-filmpage-address.ts';
-import {Play} from '@components/film/play.tsx';
-import {MyList} from '@components/film/my-list.tsx';
+import {Play} from '@components/play/play.tsx';
+import {MyList} from '@components/my-list/my-list.tsx';
 import {PromoFilm} from '@models/promo-film.ts';
 
 interface PromoFilmCardProps {
