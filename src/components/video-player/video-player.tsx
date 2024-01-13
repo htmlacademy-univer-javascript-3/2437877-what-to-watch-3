@@ -25,6 +25,12 @@ export const VideoPlayer = ({videoId, videoUrl, posterUrl, autoPlay = false, mut
     setIsPlaying(!isPlaying);
   };
 
+  const changeFullScreenMode = () => {
+    if (videoRef.current?.requestFullscreen) {
+      videoRef.current?.requestFullscreen();
+    }
+  };
+
   const handleProgress = () => {
     const duration = videoRef.current?.duration;
     const currentTime = videoRef.current?.currentTime;
@@ -70,10 +76,8 @@ export const VideoPlayer = ({videoId, videoUrl, posterUrl, autoPlay = false, mut
               </svg>}
           </button>
           <div className="player__name">Transpotting</div>
-          <button type="button" className="player__full-screen">
-            <svg viewBox="0 0 27 27" width={27} height={27}>
-              <use xlinkHref="#full-screen"/>
-            </svg>
+          <button type="button" className="player__full-screen" onClick={changeFullScreenMode}>
+            <svg viewBox="0 0 27 27" width={27} height={27}><use xlinkHref="#full-screen"/></svg>
             <span>Full screen</span>
           </button>
         </div>
