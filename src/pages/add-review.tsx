@@ -29,8 +29,8 @@ export const AddReview = ():ReactElement => {
 
   const sendComment = () => {
     if(reviewText.length < 50){
-      // eslint-disable-next-line no-alert
-      alert('text should be more 50 symbols');
+      //review must be more 50 symbols
+      //нет верстки под вывод сообщения об ошибке не стал добавлять
     }
     dispatch(sendFilmReviewAction({id: id, rating: rating, comment: reviewText}))
       .then(()=>navigate(`/films/${id}/reviews`));
