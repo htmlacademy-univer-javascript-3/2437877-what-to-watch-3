@@ -98,3 +98,11 @@ export const sendFilmReviewAction = createAsyncThunk<void, FilmReview, ThunkConf
     await api.post<FilmReviewDto>(`comments/${id}`, {comment, rating});
   },
 );
+
+export const sendFavoriteFilmStatusAction = createAsyncThunk<FilmInfo, {filmId: string; status: boolean} , ThunkConfig>(
+  'data/postFavoriteFilm',
+  async ({filmId, status}, { extra: api}) => {
+    const { data } = await api.post<FilmInfo>(`favorite/${filmId}/${+status}`);
+    return data;
+  },
+);

@@ -16,7 +16,7 @@ export const PromoFilmCard = ({promoFilm}: PromoFilmCardProps) => (
       <FilmInfo filmName={promoFilm.name} genre={promoFilm.genre} year={promoFilm.released}/>
       <div className="film-card__buttons">
         <Play filmUrl={GetFilmPlayerPageAddress(promoFilm.id)}/>
-        <MyList isFavorite={false}/>
+        <MyList isFavorite={promoFilm.isFavorite}/>
       </div>
     </div>
   </div>
