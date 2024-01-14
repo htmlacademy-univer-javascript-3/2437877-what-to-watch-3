@@ -1,9 +1,7 @@
-import {GenreType} from 'models/genre.ts';
-
 export interface Film {
   id: string;
   name: string;
-  genre: GenreType;
+  genre: string;
   previewImage: string;
   previewVideoLink: string;
 }

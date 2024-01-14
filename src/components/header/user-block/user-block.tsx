@@ -22,17 +22,19 @@ export const UserBlock = ():ReactElement => {
   return (
     <ul className="user-block">
       <li className="user-block__item">
-        <div className="user-block__avatar">
-          <img
-            src={avatarUrl}
-            alt="User avatar"
-            width={63}
-            height={63}
-          />
-        </div>
+        <Link to={'/mylist'}>
+          <div className="user-block__avatar">
+            <img
+              src={avatarUrl}
+              alt="User avatar"
+              width={63}
+              height={63}
+            />
+          </div>
+        </Link>
       </li>
       <li className="user-block__item">
-        <Link className="user-block__link" to="/" onClick={()=>{
+        <Link reloadDocument className="user-block__link" to="/" onClick={()=>{
           deleteToken();
         }}
         >Sign out

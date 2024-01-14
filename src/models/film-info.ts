@@ -1,5 +1,3 @@
-import {GenreType} from 'models/genre.ts';
-
 export interface FilmInfo {
   id: string;
   name: string;
@@ -13,7 +11,7 @@ export interface FilmInfo {
   director: string;
   starring: string[];
   runTime: number;
-  genre: GenreType;
+  genre: string;
   released: number;
   isFavorite: boolean;
 }
