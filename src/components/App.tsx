@@ -22,7 +22,7 @@ export const App = ()=>{
     <BrowserRouter>
       <Routes>
         <Route path="/">
-          <Route path='/' element={<MainPage/>}/>
+          <Route index path='/' element={<MainPage/>}/>
           <Route path='/login' element={<SignIn/>}/>
           <Route path='/mylist' element={<PrivateRoute page={<MyList/>}/>}/>
           <Route path='/films/:id/'>

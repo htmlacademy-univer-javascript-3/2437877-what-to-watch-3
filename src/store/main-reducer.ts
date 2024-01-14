@@ -1,14 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {Namespace} from '@store/const.ts';
-import {GenreType} from '@models/genre.ts';
 import {FilmInfo} from '@models/film-info.ts';
 import {Film} from '@models/film.ts';
 import {getFilmReviewsAction, getFilmsAction, getMyFilmsAction, getPromoFilmAction} from '@services/api-methods.ts';
 import {PromoFilm} from '@models/promo-film.ts';
-import {FilmReviewDto} from 'models/Dto/film-review-dto.ts';
+import {FilmReviewDto} from '@models/Dto/film-review-dto.ts';
 
 interface State {
-  genre: GenreType;
+  genre: string;
   allFilms: Film[];
   currentFilms: Film[];
   promoFilm: PromoFilm|null;
@@ -35,7 +34,7 @@ export const mainSlice = createSlice({
   name: Namespace.Main,
   initialState: mainState,
   reducers: {
-    setActiveGenre: (state, action: { payload:GenreType }) => {
+    setActiveGenre: (state, action: { payload:string }) => {
       state.genre = action.payload;
 
       if (state.genre === 'All genres') {
